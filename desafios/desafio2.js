@@ -38,9 +38,10 @@ if (usuario == usuariolog ) {
             
             `)
             let contacto = Number(prompt(`seleccionar contacto`))
-            listacontactos.forEach((contacto) =>{
-                console.log(contacto.nombre);
-            })
+            
+            const contact = listacontactos.find(listacontactos => listacontactos.id === contacto)
+            console.log(contact)
+
             
 
 

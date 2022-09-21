@@ -2,20 +2,15 @@ let usuario = prompt("ingrese usuario (1 al 4)")
 const usuariolog = "1234"
 const passlog = "123"
 
-class contactos{
-    constructor(id,nombre,alias,banco){
-        this.id = id
-        this.nombre =  nombre    
-        this.alias = alias
-        this.banco = banco
-    }
-}
-const listacontactos = [];
+const login = document.querySelector("#login")
+const nusuario = ocument.querySelector("floatingInput")
+const npass = document.querySelector("floatingPassword")
 
-listacontactos.push(new contactos(1,"juan","juanmp","mercadopago"));
-listacontactos.push(new contactos(2,"elias","eliasfargan","msantander"));
-listacontactos.push(new contactos(3,"martin","martingali","galicia"));
-listacontactos.push(new contactos(4,"manu","manubrubank","brubank"));
+if (nusuario == usuariolog && npass == passlog) {
+    console.log("bienvenido usuario")
+} else 
+console.log("datos incorrectos")
+
 
 
 if (usuario == usuariolog ) {
@@ -25,7 +20,7 @@ if (usuario == usuariolog ) {
         let operacion = Number(prompt(` que operacion desea realizar?"
          1-transsaccion 
          2-hacer un pago
-         3-ver billetera`));
+         3-agregar contactos`));
 
         if (operacion == 1) {
             console.log('transaccion')
@@ -86,5 +81,41 @@ if (usuario == usuariolog ) {
 
 } else {
     alert('USUARIO NO RECONOCIDO')
-    // console.log("usuario no reconocido")
 }
+
+
+
+
+
+
+
+
+class contactos{
+    constructor(id,nombre,alias,banco){
+        this.id = id
+        this.nombre =  nombre    
+        this.alias = alias
+        this.banco = banco
+    }
+}
+const listacontactos = [];
+
+listacontactos.push(new contactos(1,"juan","juanmp","mercadopago"));
+listacontactos.push(new contactos(2,"elias","eliasfargan","msantander"));
+listacontactos.push(new contactos(3,"martin","martingali","galicia"));
+listacontactos.push(new contactos(4,"manu","manubrubank","brubank"));
+
+
+const newcontacto = document.querySelector("#nuevocontacto")
+const id = document.querySelector("#id")
+const nombre = document.querySelector("#nombre")
+const alias = document.querySelector("#alias")
+const banco = document.querySelector("#banco")
+
+newcontacto.addEventListener("submit", agregarcontacto)
+
+function agregarcontacto(e){
+    e.preventDefault()
+    console.log(`${id.value} ${nombre.value} ${alias.value} ${banco.value}`)
+}
+

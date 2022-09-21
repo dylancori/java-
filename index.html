@@ -8,7 +8,19 @@
 </head>
 <body>
     <section id="homebanking">
-    <h2>bienvenido usuario ()</h2> <!--usuario 1234-->
+        <div id="login">
+            <label class="form-label mt-4">ingresar usuario</label>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="floatingInput" placeholder="1234">
+              <label for="floatingInput">numero de usuario</label>
+            </div>
+            <div class="form-floating">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="123">
+              <label for="floatingPassword">password</label>
+              <input type="submit" value="ingresar" >
+            </div>
+          </div>
+    <h2>bienvenido usuario</h2> <!--usuario 1234-->
     
     <div class="transaccion">
     <form action="">
@@ -21,7 +33,7 @@
             
            <p> <label for="seleccionar contacto">seleccionar contacto:</label>
             
-            <select name="contacto" id="">
+            <select name="contacto" id="contacto">
                 <br>
                 <option value="contacto 1">juan</option>
                 <option value="contacto 2">elias</option>
@@ -30,7 +42,7 @@
                 <p></p>
             </select>
             <p></p>
-            <input type="submit" value="realizar transaccion">
+            <input type="submit" value="realizar transaccion" onclick="alert('transaccion exitosa')">
             <input type="reset" value="limpiar todo"></p>
         </fieldset>
     </form>
@@ -38,44 +50,41 @@
 
 
     <div class="hacer-un-pago">
-<form action="">
+    <form action="">
         
         <fieldset>
             <legend><span>hacer un pago<span></legend>
-            <p><input type="text" placeholder="importe"></p>
-
+            <p>nro de cuenta<input type="text" name="numero de pago" id="nropago"></p>
+            <p><input type="text" placeholder="importe" class="importe"></p>
+            <p><input type="text" placeholder="cuotas"></p>
             <p> <input type="text" placeholder="descripcion"></p>
             
-            <p> <label for="nro de pago">nro de referencia de pago</label>
-            <p>nro de cuenta<input type="text" name="numero de pago" id=""></p>
             <select name="tipo de pago" id="">
                 <br>
                 <option value="visa">visa 10%</option>
                 <option value="master">master 20%</option>
                 <p></p>
             </select>
-            <p>cantidad de cuotas<input type="text"></p>
-            
             <p></p>
-            <input type="submit" value="realizar pago">
+            <input type="submit" value="realizar pago" onclick="alert('pago realizado')">
             <input type="reset" value="limpiar todo"></p>
         </fieldset>
-    </form>
+        </form>
     </div>
     
-    <div>ver billetera</div>
+    
     <div class="agregar-contactos">
-        <form action="">
+        <form action="" id="nuevocontacto">
         
             <fieldset>
                 <legend><span>agregar contacto<span></legend>
-                <p><input type="text" placeholder="id"></p>
-                <p><input type="text" placeholder="nombre"></p>
-                <p><input type="text" placeholder="alias"></p>
-                <p><input type="text" placeholder="banco"></p>
+                <p><input type="text" placeholder="id" id="id"></p>
+                <p><input type="text" placeholder="nombre" id="nombre"></p>
+                <p><input type="text" placeholder="alias" id="alias"></p>
+                <p><input type="text" placeholder="banco" id="banco"></p>
 
                 <p></p>
-                <input type="submit" value="agregar contacto">
+                <input type="submit" value="agregar contacto" onclick="alert('contacto agregado')">
                 <input type="reset" value="limpiar todo"></p>
             </fieldset>
         </form>
@@ -84,7 +93,7 @@
 
 
 </section>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="./desafios/desafio2.js"></script>
 </body>
 </html>

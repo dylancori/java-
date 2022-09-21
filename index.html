@@ -7,17 +7,20 @@
     <title>Document</title>
 </head>
 <body>
+    
+
+
     <section id="homebanking">
         <div id="login">
             <label class="form-label mt-4">ingresar usuario</label>
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="floatingInput" placeholder="1234">
+              <input type="text" class="form-control" id="user" placeholder="1234">
               <label for="floatingInput">numero de usuario</label>
             </div>
             <div class="form-floating">
-              <input type="password" class="form-control" id="floatingPassword" placeholder="123">
+              <input type="password" class="form-control" id="pass" placeholder="123">
               <label for="floatingPassword">password</label>
-              <input type="submit" value="ingresar" >
+              <p><input type="button" name="btnVerifica" id="btnVerifica" value="verificar" onclick="validar()"></p>
             </div>
           </div>
     <h2>bienvenido usuario</h2> <!--usuario 1234-->

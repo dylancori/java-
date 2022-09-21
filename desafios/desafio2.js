@@ -1,15 +1,20 @@
+
+
 let usuario = prompt("ingrese usuario (1 al 4)")
 const usuariolog = "1234"
 const passlog = "123"
 
-const login = document.querySelector("#login")
-const nusuario = ocument.querySelector("floatingInput")
-const npass = document.querySelector("floatingPassword")
+// const login = document.querySelector("#login")
+// const nusuario = document.querySelector("floatingInput")
+// const npass = document.querySelector("floatingPassword")
 
-if (nusuario == usuariolog && npass == passlog) {
-    console.log("bienvenido usuario")
-} else 
-console.log("datos incorrectos")
+function validar(){
+    let usuario = document.querySelector("#user").value;
+    let pass = document.querySelector("#pass").value;
+    if (usuario == "1234" && pass == "123") {
+        alert("login corrrecto")
+    } else alert("datos invalidos")
+}
 
 
 

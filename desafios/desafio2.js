@@ -1,99 +1,52 @@
 
-
-let usuario = prompt("ingrese usuario (1 al 4)")
+//login
 const usuariolog = "1234"
 const passlog = "123"
-
-// const login = document.querySelector("#login")
-// const nusuario = document.querySelector("floatingInput")
-// const npass = document.querySelector("floatingPassword")
 
 function validar(){
     let usuario = document.querySelector("#user").value;
     let pass = document.querySelector("#pass").value;
     if (usuario == "1234" && pass == "123") {
-        alert("login corrrecto")
-    } else alert("datos invalidos")
-}
-
-
-
-if (usuario == usuariolog ) {
-    let password = prompt("ingrese la password(1 al 3)")
-    if (password == passlog) {
-        console.log("bienvenido usuario " + usuario)
-        let operacion = Number(prompt(` que operacion desea realizar?"
-         1-transsaccion 
-         2-hacer un pago
-         3-agregar contactos`));
-
-        if (operacion == 1) {
-            console.log('transaccion')
-            alert(` contactos disponibles
-            1 - juan
-            2 - elias
-            3 - martin
-            4 - manu
-            
-            
-            `)
-            let contacto = Number(prompt(`seleccionar contacto`))
-            
-            const contact = listacontactos.find(listacontactos => listacontactos.id === contacto)
-            console.log(contact)
-
-            
-
-
-
-
-        }else if (operacion ==2) {
-            console.log("hacer un pago")
-            let cuenta = Number(prompt('numero de pago'))
-            let importe = Number(prompt('seleccione importe'));
-            let cuotas = Number(prompt('seleccione cuotas'));
-            function pago(importe, cuotas) {
-                let resultado = importe / cuotas;
-                return resultado
-            }
-            let resultado = pago(importe,cuotas);
-            console.log(`el total a pagar en cuenta N-${cuenta} es $` + resultado )
-
-            
-            let tarjeta = prompt(`seleccione tarjeta: 
-            1-visa(10%of)
-            2-master(20%)`);
-            function mediodepago (tarjeta) {
-                let x
-                switch(tarjeta){
-                    case '1':
-                        x = resultado * 90/100;
-                        break;
-                    case '2':
-                        x = resultado * 80/100;
-                        break;
-                    
-                }
-             return x 
-            }
-            
-            console.log( 'con el descuento quedaria en $' + mediodepago(tarjeta))
-        }
+        swal('login corrrecto', `Bieenvenido Usuario ${usuario}`, 'success')
         
-    } else{
-        console.log("password incorrecta")
-    }
-
-} else {
-    alert('USUARIO NO RECONOCIDO')
+    } else
+     swal('datos invalidos', '', 'error')
+     
 }
 
 
 
 
+//transaccion
+// const timport = document.querySelector("#timport")
+// const contacto = document.querySelector("#contacto")
+// contacto = listacontactos.find(listacontactos => listacontactos.id === contacto)
 
 
 
+
+
+
+
+
+
+
+
+// hacer un pago
+const nropago = document.querySelector("#nropago");
+const importe = document.querySelector("#importe");
+const cuotas = document.querySelector("#cuotas");
+const tarjeta = document.querySelector("#tarjeta")
+const visa = document.querySelector("#visa")
+const master = document.querySelector("#master")
+
+function resultado(importe,cuotas){
+    let resultado = importe / cuotas
+}
+
+
+
+//agregar contacto
 
 class contactos{
     constructor(id,nombre,alias,banco){
@@ -110,17 +63,27 @@ listacontactos.push(new contactos(2,"elias","eliasfargan","msantander"));
 listacontactos.push(new contactos(3,"martin","martingali","galicia"));
 listacontactos.push(new contactos(4,"manu","manubrubank","brubank"));
 
+    datos = [];
 
-const newcontacto = document.querySelector("#nuevocontacto")
-const id = document.querySelector("#id")
-const nombre = document.querySelector("#nombre")
-const alias = document.querySelector("#alias")
-const banco = document.querySelector("#banco")
 
-newcontacto.addEventListener("submit", agregarcontacto)
+function agregarElemento() {
+    let id = document.querySelector("#id").value;
+    let nombre = document.querySelector("#nombre").value;
+    let alias = document.querySelector("#alias").value;
+    let banco = document.querySelector("#banco").value;
 
-function agregarcontacto(e){
-    e.preventDefault()
-    console.log(`${id.value} ${nombre.value} ${alias.value} ${banco.value}`)
+    listacontactos.push(id,nombre,alias,banco);
 }
 
+function mostrarArreglo() {
+    let agreg = document.querySelector('#agreg');
+    agreg.innerHTML = '';
+
+    for (const id of listacontactos) {
+        let idParrafo = document.createElement('p');
+        idParrafo.innerText = id;
+
+        agreg.appendChild(idParrafo);
+    }
+}
+localStorage.setItem('contactos', JSON.stringify(listacontactos))

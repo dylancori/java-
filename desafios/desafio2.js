@@ -79,9 +79,11 @@ function mostrarArreglo() {
 }
 
 //transaccion
+const transacciones = [];
+
+const timport = document.querySelector("#timport")
 let info = document.getElementById("contacto")
 
 for (const nombresss  of listacontactos) {
-    info.innerHTML +=  `<option value="contacto ${nombresss.id}">${nombresss.nombre}</option>`
+    info.innerHTML +=  `<option value="contacto  ${nombresss.id}">${nombresss.nombre}</option>`
 }
-console.log()

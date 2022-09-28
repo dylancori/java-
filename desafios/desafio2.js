@@ -15,35 +15,19 @@ function validar(){
 }
 
 
+// // hacer un pago
+// const nropago = document.querySelector("#nropago");
+// const importe = document.querySelector("#importe");
+// const cuotas = document.querySelector("#cuotas");
+// const tarjeta = document.querySelector("#tarjeta")
+// const visa = document.querySelector("#visa")
+// const master = document.querySelector("#master")
 
-
-//transaccion
-// const timport = document.querySelector("#timport")
-// const contacto = document.querySelector("#contacto")
-// contacto = listacontactos.find(listacontactos => listacontactos.id === contacto)
-
-
-
-
-
-
-
-
-
-
-
-// hacer un pago
-const nropago = document.querySelector("#nropago");
-const importe = document.querySelector("#importe");
-const cuotas = document.querySelector("#cuotas");
-const tarjeta = document.querySelector("#tarjeta")
-const visa = document.querySelector("#visa")
-const master = document.querySelector("#master")
-
-function resultado(importe,cuotas){
-    let resultado = importe / cuotas
-}
-
+// let result = importe / cuotas
+// if (tarjeta == visa) {
+//     let 
+    
+// }
 
 
 //agregar contacto
@@ -54,7 +38,7 @@ class contactos{
         this.nombre =  nombre    
         this.alias = alias
         this.banco = banco
-    }
+    } 
 }
 const listacontactos = [];
 
@@ -63,27 +47,41 @@ listacontactos.push(new contactos(2,"elias","eliasfargan","msantander"));
 listacontactos.push(new contactos(3,"martin","martingali","galicia"));
 listacontactos.push(new contactos(4,"manu","manubrubank","brubank"));
 
-    datos = [];
+
+
+
 
 
 function agregarElemento() {
-    let id = document.querySelector("#id").value;
-    let nombre = document.querySelector("#nombre").value;
-    let alias = document.querySelector("#alias").value;
-    let banco = document.querySelector("#banco").value;
+    let cont = new contactos(
+      document.querySelector("#id").value,
+    document.querySelector("#nombre").value,
+      document.querySelector("#alias").value,
+      document.querySelector("#banco").value,)
 
-    listacontactos.push(id,nombre,alias,banco);
+    listacontactos.push(cont);
+    localStorage.setItem('contactos', JSON.stringify(listacontactos))
+    info.innerHTML +=  `<option value="contacto ${ document.querySelector("#id").value}">${document.querySelector("#nombre").value}</option>`
+    swal('contacto agregado con exito', '', 'success')
 }
 
 function mostrarArreglo() {
     let agreg = document.querySelector('#agreg');
     agreg.innerHTML = '';
 
-    for (const id of listacontactos) {
-        let idParrafo = document.createElement('p');
-        idParrafo.innerText = id;
+    for (const cont of listacontactos) {
+        let contParrafo = document.createElement('p');
+        contParrafo.innerHTML = `<span>${cont.id}-</span><span>${cont.nombre}-</span><span>${cont.alias}-</span>${cont.banco}<span></span>
+        `
 
-        agreg.appendChild(idParrafo);
+        agreg.appendChild(contParrafo);
     }
 }
-localStorage.setItem('contactos', JSON.stringify(listacontactos))
+
+//transaccion
+let info = document.getElementById("contacto")
+
+for (const nombresss  of listacontactos) {
+    info.innerHTML +=  `<option value="contacto ${nombresss.id}">${nombresss.nombre}</option>`
+}
+console.log()

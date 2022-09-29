@@ -75,7 +75,27 @@ for (const nombresss  of listacontactos) {
 
 }
 function transferir() {
-    console.log(`trasnferiste el total de $${tport.value} a ${info.value}`)
+  swal.fire({
+    title: "confirma los datos",
+    text: `
+    trasnferir el total de $${tport.value} a ${info.value}
+    `,
+    icon: "warning",
+    showCancelButton: true,
+    cancelButtonColor: '#d33',
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'si, continuar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        `transferencia exitosa a ${info.value}`,
+        '',
+        'success'
+      )
+    }else{
+      swal.fire("transferencia cancelada", '','error')}
+  })
+  
 }
 // hacer un pago
 

@@ -1,4 +1,4 @@
-
+  
 //login
 const usuariolog = "1234"
 const passlog = "123"
@@ -6,28 +6,14 @@ const passlog = "123"
 function validar(){
     let usuario = document.querySelector("#user").value;
     let pass = document.querySelector("#pass").value;
-    if (usuario == "1234" && pass == "123") {
-        swal('login corrrecto', `Bieenvenido Usuario ${usuario}`, 'success')
+    if (usuario === "1234" && pass === "123") {
+        swal.fire('login corrrecto', `Bieenvenido Usuario ${usuario}`, 'success')
         
     } else
-     swal('datos invalidos', '', 'error')
+     swal.fire('datos invalidos', '', 'error')
      
 }
 
-
-// // hacer un pago
-// const nropago = document.querySelector("#nropago");
-// const importe = document.querySelector("#importe");
-// const cuotas = document.querySelector("#cuotas");
-// const tarjeta = document.querySelector("#tarjeta")
-// const visa = document.querySelector("#visa")
-// const master = document.querySelector("#master")
-
-// let result = importe / cuotas
-// if (tarjeta == visa) {
-//     let 
-    
-// }
 
 
 //agregar contacto
@@ -40,16 +26,15 @@ class contactos{
         this.banco = banco
     } 
 }
-const listacontactos = [];
-
-listacontactos.push(new contactos(1,"juan","juanmp","mercadopago"));
-listacontactos.push(new contactos(2,"elias","eliasfargan","msantander"));
-listacontactos.push(new contactos(3,"martin","martingali","galicia"));
-listacontactos.push(new contactos(4,"manu","manubrubank","brubank"));
 
 
 
 
+
+
+let add = localStorage.getItem("contactos")  
+let contobj = JSON.parse(add)
+const listacontactos = contobj
 
 
 function agregarElemento() {
@@ -61,8 +46,8 @@ function agregarElemento() {
 
     listacontactos.push(cont);
     localStorage.setItem('contactos', JSON.stringify(listacontactos))
-    info.innerHTML +=  `<option value="contacto ${ document.querySelector("#id").value}">${document.querySelector("#nombre").value}</option>`
-    swal('contacto agregado con exito', '', 'success')
+    info.innerHTML +=  `<option value="${ document.querySelector("#nombre").value}">${document.querySelector("#nombre").value}</option>`
+    swal.fire('contacto agregado con exito', '', 'success')
 }
 
 function mostrarArreglo() {
@@ -79,11 +64,55 @@ function mostrarArreglo() {
 }
 
 //transaccion
-const transacciones = [];
 
-const timport = document.querySelector("#timport")
+const tport = document.querySelector("#tport")
 let info = document.getElementById("contacto")
 
+
 for (const nombresss  of listacontactos) {
-    info.innerHTML +=  `<option value="contacto  ${nombresss.id}">${nombresss.nombre}</option>`
+    info.innerHTML +=  `<option value="${nombresss.nombre}">${nombresss.nombre}</option>`
+    
+
 }
+function transferir() {
+    console.log(`trasnferiste el total de $${tport.value} a ${info.value}`)
+}
+// hacer un pago
+
+const nropago = document.querySelector("#nropago");
+let importe = document.querySelector("#importe")
+const cuotas = document.querySelector("#cuotas")
+
+function realizapago() {
+    let resul = ( importe.value / cuotas.value)
+
+    Swal.fire({
+        title: "confirma los datos",
+        text: `
+        nro de cuenta (${nropago.value})
+        importe (${resul})
+        
+        `,
+        icon: "warning",
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'si, continuar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            `pago exitoso a ${nropago.value}`,
+            '',
+            'success'
+          )
+        }else{
+          swal.fire("pago cancelado", '','error')}
+      })
+
+    
+}
+
+
+// !sessionStorage.getItem("LoginON") && window.location.assign("login.html");
+
+

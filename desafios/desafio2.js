@@ -6,16 +6,9 @@ const passlog = "123"
 function validar(){
     let usuario = document.querySelector("#user").value;
     let pass = document.querySelector("#pass").value;
-    if (usuario === "1234" && pass === "123") {
-        swal.fire('login corrrecto', `Bieenvenido Usuario ${usuario}`, 'success')
-        
-    } else
-     swal.fire('datos invalidos', '', 'error')
-     
+    usuario==="1234"&&pass==="123"?swal.fire('login corrrecto', `Bieenvenido Usuario ${usuario}`, 'success'):swal.fire('datos invalidos', '', 'error')
+    
 }
-
-
-
 //agregar contacto
 
 class contactos{
@@ -26,9 +19,6 @@ class contactos{
         this.banco = banco
     } 
 }
-
-
-
 
 
 
@@ -133,6 +123,6 @@ function realizapago() {
 }
 
 
-// !sessionStorage.getItem("LoginON") && window.location.assign("login.html");
+
 
 

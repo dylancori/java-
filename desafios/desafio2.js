@@ -5,8 +5,8 @@ function validar(){
   let usuario = document.querySelector("#user").value;
   let pass = document.querySelector("#pass").value;
   fetch("../e.json").then(res => res.json()).then(data => {
-   let user =  data.filter(d => usuario==d.usuario)[0] 
-   if (user.pass == pass) {
+   let user =  data.find(user => user.usuario = usuario && user.pass == pass) 
+   if (user) {
     swal.fire('login corrrecto', `Bienvenido ${usuario}`, 'success')
    } else{
     swal.fire('datos invalidos', '', 'error')
@@ -35,11 +35,12 @@ const listacontactos = contobj
 
 
 function agregarElemento() {
-    let cont = new contactos(
-      document.querySelector("#id").value,
-    document.querySelector("#nombre").value,
-      document.querySelector("#alias").value,
-      document.querySelector("#banco").value,)
+    
+      let id =  document.querySelector("#id").value;
+      let nombre =  document.querySelector("#nombre").value;
+      let alias = document.querySelector("#alias").value;
+      let banco =  document.querySelector("#banco").value;
+      let cont = new contactos (id,nombre,alias,banco)
 
     listacontactos.push(cont);
     localStorage.setItem('contactos', JSON.stringify(listacontactos))

@@ -5,7 +5,7 @@ function validar(){
   let usuario = document.querySelector("#user").value;
   let pass = document.querySelector("#pass").value;
   fetch("../e.json").then(res => res.json()).then(data => {
-   let user =  data.find(user => user.usuario = usuario && user.pass == pass) 
+   let user =  data.find(user => user.usuario = usuario && user.pass = pass) 
    if (user) {
     swal.fire('login corrrecto', `Bienvenido ${usuario}`, 'success')
    } else{
@@ -40,7 +40,7 @@ function agregarElemento() {
       let nombre =  document.querySelector("#nombre").value;
       let alias = document.querySelector("#alias").value;
       let banco =  document.querySelector("#banco").value;
-      let cont = new contactos (id,nombre,alias,banco)
+      let cont = new contactos (id,nombre,alias,banco);
 
     listacontactos.push(cont);
     localStorage.setItem('contactos', JSON.stringify(listacontactos))

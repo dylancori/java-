@@ -1,7 +1,8 @@
  
 //login
 
-function validar(){
+document.querySelector("#btnVerifica").onclick = function validar(){
+  document.querySelector("#btnVerifica").onclick
   let usuario = document.querySelector("#user").value;
   let pass = document.querySelector("#pass").value;
   fetch("../e.json").then(res => res.json()).then(data => {
@@ -29,12 +30,10 @@ class contactos{
 
 
 
-// let add = localStorage.getItem("contactos")  
-// let contobj = JSON.parse(add)
-// const listacontactos = contobj
+
 let listacontactos = JSON.parse(localStorage.getItem('contactos'))||[]
 
-function agregarElemento() {
+document.querySelector("#btnAgregarElemento").onclick = function agregarElemento() {
     
       let id =  document.querySelector("#id").value;
       let nombre =  document.querySelector("#nombre").value;
@@ -48,7 +47,7 @@ function agregarElemento() {
     swal.fire('contacto agregado con exito', '', 'success')
 }
 
-function mostrarArreglo() {
+document.querySelector("#btnMostrarArreglo").onclick = function mostrarArreglo() {
     let agreg = document.querySelector('#agreg');
     agreg.innerHTML = '';
 
@@ -72,7 +71,7 @@ for (const nombresss  of listacontactos) {
     
 
 }
-function transferir() {
+document.querySelector("#transaccion").onclick = function transferir() {
   swal.fire({
     title: "confirma los datos",
     text: `
@@ -101,7 +100,7 @@ const nropago = document.querySelector("#nropago");
 let importe = document.querySelector("#importe")
 const cuotas = document.querySelector("#cuotas")
 
-function realizapago() {
+document.querySelector("#pagar").onclick = function realizapago() {
     let resul = ( importe.value / cuotas.value)
 
     Swal.fire({

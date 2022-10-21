@@ -1,14 +1,25 @@
-  
+ 
 //login
-const usuariolog = "1234"
-const passlog = "123"
+// fetch("../e.json").then(res => res.json()).then(data => console.log(data))
+
+// const usuariolog = "1234"
+// const passlog = "123"
 
 function validar(){
-    let usuario = document.querySelector("#user").value;
-    let pass = document.querySelector("#pass").value;
-    usuario==="1234"&&pass==="123"?swal.fire('login corrrecto', `Bieenvenido Usuario ${usuario}`, 'success'):swal.fire('datos invalidos', '', 'error')
+  let usuario = document.querySelector("#user").value;
+  let pass = document.querySelector("#pass").value;
+  fetch("../e.json").then(res => res.json()).then(data => {
+   let user =  data.filter(d => usuario==d.usuario)[0] 
+   if (user.pass == pass) {
+    swal.fire('login corrrecto', `Bienvenido ${usuario}`, 'success')
+   } else{
+    swal.fire('datos invalidos', '', 'error')
+   }
+  })
+    
     
 }
+
 //agregar contacto
 
 class contactos{
@@ -48,7 +59,7 @@ function mostrarArreglo() {
         let contParrafo = document.createElement('p');
         contParrafo.innerHTML = `<span>${cont.id}-</span><span>${cont.nombre}-</span><span>${cont.alias}-</span>${cont.banco}<span></span>
         `
-
+ 
         agreg.appendChild(contParrafo);
     }
 }

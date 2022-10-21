@@ -6,13 +6,13 @@ document.querySelector("#btnVerifica").onclick = function validar(){
   let usuario = document.querySelector("#user").value;
   let pass = document.querySelector("#pass").value;
   fetch("../e.json").then(res => res.json()).then(data => {
-   let user =  data.find(user => user.usuario = usuario && user.pass == pass) 
-   if (user) {
-    swal.fire('login corrrecto', `Bienvenido ${usuario}`, 'success')
-   } else{
-    swal.fire('datos invalidos', '', 'error')
-   }
-  })
+    let user =  data.filter(d => usuario==d.usuario)[0] 
+    if (user.pass == pass) {
+     swal.fire('login corrrecto', `Bienvenido ${usuario}`, 'success')
+    } else{
+     swal.fire('datos invalidos', '', 'error')
+    }
+   })
     
     
 }

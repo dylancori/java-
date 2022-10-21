@@ -29,10 +29,10 @@ class contactos{
 
 
 
-let add = localStorage.getItem("contactos")  
-let contobj = JSON.parse(add)
-const listacontactos = contobj
-
+// let add = localStorage.getItem("contactos")  
+// let contobj = JSON.parse(add)
+// const listacontactos = contobj
+let listacontactos = JSON.parse(localStorage.getItem('contactos'))||[]
 
 function agregarElemento() {
     

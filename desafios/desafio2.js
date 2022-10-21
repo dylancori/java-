@@ -1,9 +1,5 @@
  
 //login
-// fetch("../e.json").then(res => res.json()).then(data => console.log(data))
-
-// const usuariolog = "1234"
-// const passlog = "123"
 
 function validar(){
   let usuario = document.querySelector("#user").value;
